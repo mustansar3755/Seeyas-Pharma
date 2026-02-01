@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
+import ContactUsPage from "./pages/ContactUsPage";
 
 const App = () => {
   useEffect(() => {
@@ -37,6 +38,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/apply" element={<ApplicationPage />} />
+          <Route path="/contact-us" element={<ContactUsPage />} />
         </Routes>
       </main>
       <Footer />

@@ -26,6 +26,12 @@ const Navbar = () => {
               Home
             </Link>
             <Link 
+              to="/contact-us" 
+              className="text-gray-700 hover:text-emerald-600 font-semibold transition-colors hidden sm:block"
+            >
+              Contact Us
+            </Link>
+            <Link 
               to="/apply" 
               className="bg-linear-to-r from-emerald-600 to-emerald-700 text-white px-6 py-2 rounded-lg font-semibold hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 shadow-md hover:shadow-lg"
             >
