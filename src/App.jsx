@@ -8,6 +8,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import InnovationPage from "./pages/InnovationPage";
 import GlobalPresencePage from "./pages/GlobalPresencePage";
+import NewsPage from "./pages/NewsPage";
 
 const App = () => {
   useEffect(() => {
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="/apply" element={<ApplicationPage />} />
           <Route path="/innovation" element={<InnovationPage />} />
           <Route path="/global" element={<GlobalPresencePage />} />
+          <Route path="/news" element={<NewsPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/contact-us" element={<ContactUsPage />} />
         </Routes>
