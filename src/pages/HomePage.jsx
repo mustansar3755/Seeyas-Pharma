@@ -127,7 +127,7 @@ const HomePage = () => {
                 {item.title}
               </h3>
 
-              <p className="text-gray-600 leading-relaxed text-sm sm:text-base flex-grow">
+              <p className="text-gray-600 leading-relaxed text-sm sm:text-base grow">
                 {item.desc}
               </p>
 
