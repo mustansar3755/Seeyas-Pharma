@@ -5,15 +5,19 @@ import CompanyOverview from "../components/AboutUs/CompanyOverview";
 import MissionVision from "../components/AboutUs/MissionVision";
 import StatsSection from "../components/AboutUs/StatsSection";
 import CoreValues from "../components/AboutUs/CoreValues";
+import TeamSection from "../components/AboutUs/TeamSection";
+import OurStory from "../components/AboutUs/OurStory";
 
 const AboutUsPage = () => {
   return (
     <div className="min-h-screen bg-[#F9FAFB]">
       <AboutHero />
       <CompanyOverview />
+      <OurStory/>
       <MissionVision />
       <StatsSection />
       <CoreValues />
+      <TeamSection/>
 
       {/* CTA Section */}
       <div className="bg-emerald-900 py-20 relative overflow-hidden">
