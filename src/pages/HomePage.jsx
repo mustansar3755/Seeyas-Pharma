@@ -13,7 +13,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Hero from "../components/Home/Hero";
-import BrandStrip from "../components/Home/BrandStrip";
+
 import Testimonials from "../components/Home/Testimonials";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -96,7 +96,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-slate-50 overflow-x-hidden">
       <Hero />
-      <BrandStrip />
+     
       <div
         ref={featuresRef}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32"
