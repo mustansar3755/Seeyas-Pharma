@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import emailjs from "emailjs-com";
 import { 
   ArrowRight, 
   CheckCircle2, 
@@ -20,18 +21,19 @@ const ApplicationPage = () => {
   const containerRef = useRef(null);
 
   const [formData, setFormData] = useState({
-    companyName: '',
-    contactPerson: '', // Added
-    email: '',
-    phone: '',
-    city: '', // Now a dropdown
-    country: '',
-    message: ''
+    companyName: "",
+    contactPerson: "",
+    email: "",
+    phone: "",
+    city: "",
+    distributionLevel: "", // Less than 10 / More than 10
+    findUs: "", // Social media / Representative met
+    message: "",
+    time: new Date().toLocaleString()
   });
 
   const [submitted, setSubmitted] = useState(false);
 
-  // Example City List - You can expand this
   const cities = [
     "New York", "London", "Dubai", "Singapore", "Berlin", "Toronto", "Sydney", "Mumbai"
   ];
@@ -48,9 +50,24 @@ const ApplicationPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Send form using EmailJS
+    emailjs.sendForm(
+      "service_z9lr7bw",
+      "template_1usrdtw",
+      e.target,
+      "UC3V_C0dNKj59aqAD"
+    ).then(
+      (result) => {
+        console.log("Email sent:", result.text);
+        setSubmitted(true);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      },
+      (error) => {
+        console.error("Email error:", error.text);
+        alert("Error sending email. Check console.");
+      }
+    );
   };
 
   if (submitted) {
@@ -73,7 +90,6 @@ const ApplicationPage = () => {
   return (
     <div ref={containerRef} className="min-h-screen bg-slate-50 py-16 px-4">
       <div className="max-w-4xl mx-auto">
-        
         <div className="form-header text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full mb-6 font-bold text-sm">
             <Crown className="w-4 h-4" />
@@ -84,7 +100,6 @@ const ApplicationPage = () => {
 
         <div className="bg-white rounded-[2.5rem] shadow-xl p-8 md:p-12 border border-gray-100">
           <form onSubmit={handleSubmit} className="space-y-8">
-            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Company Name */}
               <div className="form-field space-y-2">
@@ -102,7 +117,7 @@ const ApplicationPage = () => {
                 />
               </div>
 
-              {/* Contact Person - NEW FIELD */}
+              {/* Contact Person */}
               <div className="form-field space-y-2">
                 <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
                   <User className="w-4 h-4 text-emerald-600" /> Contact Person *
@@ -118,6 +133,7 @@ const ApplicationPage = () => {
                 />
               </div>
 
+              {/* Email */}
               <div className="form-field space-y-2">
                 <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
                   <Mail className="w-4 h-4 text-emerald-600" /> Business Email *
@@ -132,6 +148,7 @@ const ApplicationPage = () => {
                 />
               </div>
 
+              {/* Phone */}
               <div className="form-field space-y-2">
                 <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
                   <Phone className="w-4 h-4 text-emerald-600" /> Phone Number *
@@ -146,47 +163,65 @@ const ApplicationPage = () => {
                 />
               </div>
 
-              {/* Country */}
-              <div className="form-field space-y-2">
-                <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
-                  <Globe className="w-4 h-4 text-emerald-600" /> Country *
-                </label>
-                <input
-                  type="text"
-                  name="country"
-                  required
-                  value={formData.country}
-                  onChange={handleChange}
-                  className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all"
-                />
-              </div>
 
-              {/* City - DROPDOWN UPDATE */}
+              {/* City */}
               <div className="form-field space-y-2">
                 <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
                   <MapPin className="w-4 h-4 text-emerald-600" /> City *
                 </label>
-                <div className="relative">
-                  <select
-                    name="city"
-                    required
-                    value={formData.city}
-                    onChange={handleChange}
-                    className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all appearance-none bg-white"
-                  >
-                    <option value="" disabled>Select a city</option>
-                    {cities.map((city) => (
-                      <option key={city} value={city}>{city}</option>
-                    ))}
-                    <option value="Other">Other...</option>
-                  </select>
-                  <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                    ▼
-                  </div>
-                </div>
+                <select
+                  name="city"
+                  required
+                  value={formData.city}
+                  onChange={handleChange}
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all appearance-none bg-white"
+                >
+                  <option value="" disabled>Select a city</option>
+                  {cities.map((city) => (
+                    <option key={city} value={city}>{city}</option>
+                  ))}
+                  <option value="Other">Other...</option>
+                </select>
+              </div>
+
+              {/* Distribution Level */}
+              <div className="form-field space-y-2 md:col-span-2">
+                <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
+                  Distribution Level *
+                </label>
+                <select
+                  name="distributionLevel"
+                  required
+                  value={formData.distributionLevel}
+                  onChange={handleChange}
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all appearance-none bg-white"
+                >
+                  <option value="" disabled>Select level</option>
+                  <option value="Less than 10 employees">Less than 10 employees</option>
+                  <option value="More than 10 employees">More than 10 employees</option>
+                </select>
+              </div>
+
+              {/* Where did you find us */}
+              <div className="form-field space-y-2 md:col-span-2">
+                <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
+                  Where did you find us? *
+                </label>
+                <select
+                  name="findUs"
+                  required
+                  value={formData.findUs}
+                  onChange={handleChange}
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all appearance-none bg-white"
+                >
+                  <option value="" disabled>Select</option>
+                  <option value="Social Media">Social Media</option>
+                  <option value="Representative Met">Representative Met</option>
+                </select>
               </div>
             </div>
 
+            {/* Additional Details */}
             <div className="form-field space-y-2">
               <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
                 <MessageSquare className="w-4 h-4 text-emerald-600" /> Additional Details
