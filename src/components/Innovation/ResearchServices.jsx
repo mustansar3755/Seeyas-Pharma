@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import assets from "../../assets/assets";
 
 const services = [
   {
@@ -79,7 +80,7 @@ const ResearchServices = () => {
             <div className="relative w-full max-w-md">
               <div className="absolute inset-0 bg-teal-400/20 blur-[100px] rounded-full"></div>
               <img
-                src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZG5hfGVufDB8fDB8fHww"
+              src={assets.Research}
                 alt="DNA Helix"
                 className="relative z-10 w-full h-auto rounded-xl mix-blend-multiply transition-transform duration-700 hover:scale-105"
               />

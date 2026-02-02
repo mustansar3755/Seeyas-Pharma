@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Newspaper } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import assets from "../../assets/assets";
 
 const NewsHero = () => {
   const container = useRef();
@@ -15,7 +16,7 @@ const NewsHero = () => {
         ease: "power3.out",
       });
     },
-    { scope: container }
+    { scope: container },
   );
 
   return (
@@ -26,7 +27,7 @@ const NewsHero = () => {
       {/* Background Image Section */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1585435557343-3b092031a831?w=1600&auto=format&fit=crop&q=80"
+          src={assets.News_Hero}
           alt="News and Events Background"
           className="w-full h-full object-cover opacity-40"
         />
@@ -51,7 +52,7 @@ const NewsHero = () => {
 
           {/* Subtitle */}
           <p className="text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
-            Stay informed with the latest breakthroughs, corporate milestones, 
+            Stay informed with the latest breakthroughs, corporate milestones,
             and health initiatives from Getz Pharma.
           </p>
         </div>

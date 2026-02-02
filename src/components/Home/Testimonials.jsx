@@ -1,22 +1,23 @@
 const testimonials = [
   {
-    name: "Dr. Arshad Khan",
-    role: "Pharmacy Owner",
-    text: "Seeyas Pharma has been our most reliable partner. Their cold chain maintenance for vaccines is top-notch.",
-    avatar: "https://ui-avatars.com/api/?name=Arshad+Khan&bg=10b981&color=fff"
-  },
-  {
-    name: "Sarah Williams",
-    role: "Hospital Procurement",
-    text: "The delivery speed is incredible. We often get our emergency life-saving drugs within 4 hours.",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Williams&bg=0891b2&color=fff"
-  },
-  {
-    name: "Ahmed Raza",
-    role: "Clinic Manager",
-    text: "Professional staff and genuine products. Their digital tracking system makes inventory management very easy.",
-    avatar: "https://ui-avatars.com/api/?name=Ahmed+Raza&bg=0369a1&color=fff"
-  }
+  name: "Dr. Muhammad Asif",
+  role: "Pharmacy Owner",
+  text: "Seeyas Pharma has been an extremely dependable partner. Their vaccine cold-chain handling meets international standards.",
+  avatar: "https://ui-avatars.com/api/?name=Muhammad+Asif&bg=10b981&color=fff"
+},
+{
+  name: "Ayesha Malik",
+  role: "Hospital Procurement Manager",
+  text: "Their delivery time is outstanding. Emergency medicines usually reach us within a few hours.",
+  avatar: "https://ui-avatars.com/api/?name=Ayesha+Malik&bg=0891b2&color=fff"
+},
+{
+  name: "Ahmed Hassan",
+  role: "Clinic Operations Manager",
+  text: "Authentic medicines and very professional staff. The digital tracking system has made stock management much easier.",
+  avatar: "https://ui-avatars.com/api/?name=Ahmed+Hassan&bg=0369a1&color=fff"
+}
+
 ];
 
 const Testimonials = () => (

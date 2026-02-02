@@ -2,6 +2,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import assets from "../../assets/assets";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,7 +52,7 @@ const CompanyOverview = () => {
           <div className="absolute inset-0 bg-emerald-500/10 rounded-[3rem] blur-3xl group-hover:bg-emerald-500/20 transition-all duration-700"></div>
           <div className="relative bg-white rounded-[2.5rem] shadow-2xl p-4 border border-gray-50 overflow-hidden">
             <img
-              src="https://media.istockphoto.com/id/2194013442/photo/scientists-having-a-discussion-about-their-research-in-the-laboratory.webp?a=1&b=1&s=612x612&w=0&k=20&c=2i9jIUAUiKQ4X6jl6DwTQR9i587c8p7KTHzYS25qeuc="
+              src={assets.Company_Overview}
               alt="Logo"
               className="w-full rounded-2xl grayscale hover:grayscale-0 transition-all duration-700"
             />

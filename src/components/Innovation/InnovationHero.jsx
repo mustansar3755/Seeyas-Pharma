@@ -2,6 +2,7 @@ import { Beaker } from "lucide-react"; // Beaker icon research ke liye suit kart
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import assets from "../../assets/assets";
 
 const InnovationHero = () => {
   const container = useRef();
@@ -26,7 +27,7 @@ const InnovationHero = () => {
       {/* Background Image Section - High-tech Lab Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://media.istockphoto.com/id/1087218874/photo/shot-of-sterile-pharmaceutical-manufacturing-laboratory-where-scientists-in-protective.webp?a=1&b=1&s=612x612&w=0&k=20&c=4iT7F29ASFrU1pao52oMR1ndb1iTn81DqQ5lPLPyp94="
+        src={assets.InnovationHero}
           alt="Advanced Laboratory Research"
           className="w-full h-full object-cover opacity-40"
         />

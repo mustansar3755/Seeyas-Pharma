@@ -103,12 +103,7 @@ const Footer = () => {
                   <Mail size={18} />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <a
-                    href="mailto:murtzag1986@gmail.com"
-                    className="text-slate-600 hover:text-teal-600 transition-colors whitespace-nowrap"
-                  >
-                    murtzag1986@gmail.com
-                  </a>
+                 
                   <a
                     href="mailto:seeyasnutritionpharmaceuticals@gmail.com"
                     className="text-slate-600 hover:text-teal-600 transition-colors whitespace-nowrap"

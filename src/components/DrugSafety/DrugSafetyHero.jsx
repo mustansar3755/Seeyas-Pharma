@@ -2,6 +2,7 @@ import { ShieldCheck } from "lucide-react";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import assets from "../../assets/assets";
 
 const DrugSafetyHero = () => {
   const container = useRef();
@@ -38,7 +39,7 @@ const DrugSafetyHero = () => {
       {/* Background Image Section */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=2000"
+        src={assets.Drug_Safety_Hero}
           alt="Pharmacovigilance Background"
           className="w-full h-full object-cover opacity-30"
         />

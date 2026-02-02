@@ -3,6 +3,7 @@ import { Cpu, Factory, ShieldCheck } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import assets from '../../assets/assets';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,7 +54,7 @@ const ManufacturingTech = () => {
             <div className="absolute -top-4 -left-4 w-24 h-24 bg-teal-500/10 rounded-full blur-2xl"></div>
             <div className="relative z-10 p-2 bg-white rounded-[2.5rem] shadow-xl border border-slate-100">
               <img 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" 
+              src={assets.Manufacturing}
                 alt="Modern Manufacturing Facility" 
                 className="rounded-4xl w-full h-full object-cover shadow-inner"
               />

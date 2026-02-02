@@ -2,6 +2,7 @@ import { Globe2 } from "lucide-react"; // Global theme ke liye icon change kiya
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import assets from "../../assets/assets";
 
 const GlobalHero = () => {
   const container = useRef();
@@ -26,7 +27,7 @@ const GlobalHero = () => {
       {/* Background Image Section (World/Global theme image) */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1500&auto=format&fit=crop"
+        src={assets.Global_Presence}
           alt="Global Network Background"
           className="w-full h-full object-cover opacity-40"
         />

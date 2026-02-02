@@ -2,6 +2,7 @@ import { Crown } from "lucide-react";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import assets from "../../assets/assets";
 
 const AboutHero = () => {
   const container = useRef();
@@ -26,7 +27,7 @@ const AboutHero = () => {
       {/* Background Image Section */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1669101283516-e608dcf142df?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHBoYXJtYWNldXRpY2Fsc3xlbnwwfHwwfHx8MA%3D%3D"
+        src={assets.About_US_Hero}
           alt="Pharmaceutical Background"
           className="w-full h-full object-cover opacity-40"
         />
