@@ -6,17 +6,23 @@ import {
   Mail,
   Phone,
   Twitter,
-  Youtube,
   ChevronRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import assets from "../assets/assets";
 
 const Footer = () => {
+  // Helper to format path: "About Us" -> "/about-us"
+  const formatPath = (name) => {
+    if (name === "Home") return "/";
+    return `/${name.toLowerCase().replace(/\s+/g, "-")}`;
+  };
+
   return (
     <footer className="bg-slate-50 border-t border-emerald-100 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          
           {/* Company Info */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-6">
@@ -40,17 +46,17 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links - NOW CLICKABLE */}
           <div>
             <h4 className="text-lg font-bold mb-7 text-slate-900 relative inline-block">
               Quick Links
               <span className="absolute -bottom-2 left-0 w-8 h-1 bg-teal-500 rounded-full"></span>
             </h4>
             <ul className="space-y-4">
-              {["Home", "About Us", "Innovation", "Contact Us"].map((item) => (
+              {["Home", "About Us", "Innovation", "Contact Us", "Drug Safety"].map((item) => (
                 <li key={item}>
                   <Link
-                    to={`/${item.toLowerCase().replace(" ", "-")}`}
+                    to={formatPath(item)}
                     className="text-slate-600 hover:text-teal-600 flex items-center gap-2 transition-colors font-medium group"
                   >
                     <ChevronRight
@@ -64,7 +70,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Details */}
+          {/* Contact Details - CLICKABLE PROTOCOLS */}
           <div>
             <h4 className="text-lg font-bold mb-7 text-slate-900 relative inline-block">
               Get In Touch
@@ -77,6 +83,8 @@ const Footer = () => {
                 </div>
                 <a
                   href="https://www.seeyaspharma.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-slate-600 hover:text-teal-600 transition-colors pt-1"
                 >
                   www.seeyaspharma.com
@@ -97,12 +105,18 @@ const Footer = () => {
                 <div className="bg-teal-100 p-2 rounded-lg text-teal-700">
                   <Phone size={18} />
                 </div>
-                <span className="text-slate-600 pt-1">+92 (Your Number)</span>
+                {/* Protocol for dialing phone numbers */}
+                <a 
+                  href="tel:+92000000000" 
+                  className="text-slate-600 hover:text-teal-600 transition-colors pt-1"
+                >
+                  +92 (Your Number)
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Newsletter / Social */}
+          {/* Newsletter / Social - CLICKABLE ICONS */}
           <div>
             <h4 className="text-lg font-bold mb-7 text-slate-900 relative inline-block">
               Global Presence
@@ -112,10 +126,17 @@ const Footer = () => {
               Stay connected with our global healthcare network.
             </p>
             <div className="flex gap-3">
-              {[Facebook, Linkedin, Instagram, Twitter].map((Icon, i) => (
+              {[
+                { Icon: Facebook, link: "https://facebook.com/yourpage" },
+                { Icon: Linkedin, link: "https://linkedin.com/company/yourpage" },
+                { Icon: Instagram, link: "https://instagram.com/yourpage" },
+                { Icon: Twitter, link: "https://twitter.com/yourpage" }
+              ].map((item, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 text-teal-600 border
                    border-slate-200 hover:bg-teal-600
                     hover:text-white hover:border-teal-600
@@ -123,7 +144,7 @@ const Footer = () => {
                      rounded-xl flex items-center justify-center
                       transition-all duration-700 shadow-sm"
                 >
-                  <Icon size={18} />
+                  <item.Icon size={18} />
                 </a>
               ))}
             </div>
@@ -139,12 +160,12 @@ const Footer = () => {
               All rights reserved.
             </p>
             <div className="flex gap-8 text-slate-400 font-medium">
-              <a href="#" className="hover:text-teal-600 transition-colors">
+              <Link to="/privacy-policy" className="hover:text-teal-600 transition-colors">
                 Privacy Policy
-              </a>
-              <a href="#" className="hover:text-teal-600 transition-colors">
+              </Link>
+              <Link to="/terms-of-service" className="hover:text-teal-600 transition-colors">
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>

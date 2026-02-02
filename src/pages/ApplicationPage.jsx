@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-// 1. Correct GSAP Imports
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { 
@@ -8,52 +7,40 @@ import {
   CheckCircle2, 
   Crown, 
   Mail, 
-  MapPin, 
   Phone, 
   Send,
   Building2,
   Globe,
-  MessageSquare
+  MessageSquare,
+  User,
+  MapPin
 } from "lucide-react";
 
 const ApplicationPage = () => {
-  // 2. Create a standard React Ref for the container
   const containerRef = useRef(null);
 
   const [formData, setFormData] = useState({
     companyName: '',
-    contactPerson: '',
+    contactPerson: '', // Added
     email: '',
     phone: '',
-    address: '',
-    city: '',
+    city: '', // Now a dropdown
     country: '',
-    experience: '',
-    distributionArea: '',
     message: ''
   });
 
   const [submitted, setSubmitted] = useState(false);
 
-  // 3. GSAP Animation Logic
+  // Example City List - You can expand this
+  const cities = [
+    "New York", "London", "Dubai", "Singapore", "Berlin", "Toronto", "Sydney", "Mumbai"
+  ];
+
   useGSAP(() => {
     const tl = gsap.timeline();
-
-    tl.from(".form-header", {
-      y: -50,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out"
-    })
-    .from(".form-field", {
-      y: 20,
-      opacity: 0,
-      duration: 0.5,
-      stagger: 0.1,
-      ease: "power2.out"
-    }, "-=0.4");
-    
-  }, { scope: containerRef }); // 4. Scoping prevents "gsap is not a function" and Ref errors
+    tl.from(".form-header", { y: -50, opacity: 0, duration: 0.8, ease: "power3.out" })
+      .from(".form-field", { y: 20, opacity: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" }, "-=0.4");
+  }, { scope: containerRef });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -87,26 +74,19 @@ const ApplicationPage = () => {
     <div ref={containerRef} className="min-h-screen bg-slate-50 py-16 px-4">
       <div className="max-w-4xl mx-auto">
         
-        {/* Header Section */}
         <div className="form-header text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full mb-6 font-bold text-sm">
             <Crown className="w-4 h-4" />
             <span>Official Partner Program</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-4">
-            Distributor Application
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Join our global network of healthcare distributors and bring premium medical solutions to your region.
-          </p>
+          <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-4">Distributor Application</h1>
         </div>
 
-        {/* Main Form */}
         <div className="bg-white rounded-[2.5rem] shadow-xl p-8 md:p-12 border border-gray-100">
           <form onSubmit={handleSubmit} className="space-y-8">
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Company Info */}
+              {/* Company Name */}
               <div className="form-field space-y-2">
                 <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
                   <Building2 className="w-4 h-4 text-emerald-600" /> Company Name *
@@ -122,6 +102,22 @@ const ApplicationPage = () => {
                 />
               </div>
 
+              {/* Contact Person - NEW FIELD */}
+              <div className="form-field space-y-2">
+                <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
+                  <User className="w-4 h-4 text-emerald-600" /> Contact Person *
+                </label>
+                <input
+                  type="text"
+                  name="contactPerson"
+                  required
+                  value={formData.contactPerson}
+                  onChange={handleChange}
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all"
+                  placeholder="Full Name"
+                />
+              </div>
+
               <div className="form-field space-y-2">
                 <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
                   <Mail className="w-4 h-4 text-emerald-600" /> Business Email *
@@ -133,22 +129,6 @@ const ApplicationPage = () => {
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all"
-                  placeholder="contact@company.com"
-                />
-              </div>
-
-              <div className="form-field space-y-2">
-                <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
-                  <Globe className="w-4 h-4 text-emerald-600" /> Country *
-                </label>
-                <input
-                  type="text"
-                  name="country"
-                  required
-                  value={formData.country}
-                  onChange={handleChange}
-                  className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all"
-                  placeholder="e.g. United Kingdom"
                 />
               </div>
 
@@ -163,12 +143,50 @@ const ApplicationPage = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all"
-                  placeholder="+1 (555) 000-0000"
                 />
+              </div>
+
+              {/* Country */}
+              <div className="form-field space-y-2">
+                <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
+                  <Globe className="w-4 h-4 text-emerald-600" /> Country *
+                </label>
+                <input
+                  type="text"
+                  name="country"
+                  required
+                  value={formData.country}
+                  onChange={handleChange}
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all"
+                />
+              </div>
+
+              {/* City - DROPDOWN UPDATE */}
+              <div className="form-field space-y-2">
+                <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
+                  <MapPin className="w-4 h-4 text-emerald-600" /> City *
+                </label>
+                <div className="relative">
+                  <select
+                    name="city"
+                    required
+                    value={formData.city}
+                    onChange={handleChange}
+                    className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all appearance-none bg-white"
+                  >
+                    <option value="" disabled>Select a city</option>
+                    {cities.map((city) => (
+                      <option key={city} value={city}>{city}</option>
+                    ))}
+                    <option value="Other">Other...</option>
+                  </select>
+                  <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                    ▼
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Full Width Field */}
             <div className="form-field space-y-2">
               <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
                 <MessageSquare className="w-4 h-4 text-emerald-600" /> Additional Details
@@ -179,28 +197,19 @@ const ApplicationPage = () => {
                 value={formData.message}
                 onChange={handleChange}
                 className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all resize-none"
-                placeholder="Tell us about your distribution experience..."
               ></textarea>
             </div>
 
-            {/* Submit Button */}
             <div className="form-field pt-4">
               <button
                 type="submit"
-                className="group w-full bg-emerald-600 hover:bg-emerald-700 text-white py-5 rounded-2xl font-bold text-xl flex items-center justify-center gap-3 transition-all active:scale-[0.98] shadow-lg shadow-emerald-200"
+                className="group w-full cursor-pointer bg-emerald-600 hover:bg-emerald-700 text-white py-5 rounded-2xl font-bold text-xl flex items-center justify-center gap-3 transition-all active:scale-[0.98] shadow-lg shadow-emerald-200"
               >
                 Submit Partnership Request
                 <Send className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </button>
             </div>
           </form>
-        </div>
-
-        {/* Footer Link */}
-        <div className="text-center mt-12">
-          <Link to="/" className="text-gray-500 hover:text-emerald-600 font-medium transition-colors">
-            ← Back to Homepage
-          </Link>
         </div>
       </div>
     </div>

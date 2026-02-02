@@ -9,6 +9,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import InnovationPage from "./pages/InnovationPage";
 import GlobalPresencePage from "./pages/GlobalPresencePage";
 import NewsPage from "./pages/NewsPage";
+import DrugSafetyPage from "./pages/DrugSafetyPage";
 
 const App = () => {
   useEffect(() => {
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/global" element={<GlobalPresencePage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
+          <Route path="/drug-safety" element={<DrugSafetyPage />} />
           <Route path="/contact-us" element={<ContactUsPage />} />
         </Routes>
       </main>
