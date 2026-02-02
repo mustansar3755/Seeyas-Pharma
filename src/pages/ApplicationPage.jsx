@@ -16,6 +16,7 @@ import {
   User,
   MapPin,
 } from "lucide-react";
+import { cities } from "../data/citiesData";
 
 const ApplicationPage = () => {
   const containerRef = useRef(null);
@@ -34,16 +35,7 @@ const ApplicationPage = () => {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const cities = [
-  "Karachi",
-  "Lahore",
-  "Islamabad",
-  "Rawalpindi",
-  "Faisalabad",
-  "Multan",
-  "Peshawar",
-  "Quetta",
-];
+ 
 
 
   useGSAP(
