@@ -4,15 +4,14 @@ import {
   Instagram,
   Linkedin,
   Mail,
-  Phone,
   Twitter,
   ChevronRight,
+  MapPin,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import assets from "../assets/assets";
 
 const Footer = () => {
-  // Helper to format path: "About Us" -> "/about-us"
   const formatPath = (name) => {
     if (name === "Home") return "/";
     return `/${name.toLowerCase().replace(/\s+/g, "-")}`;
@@ -21,10 +20,12 @@ const Footer = () => {
   return (
     <footer className="bg-slate-50 border-t border-emerald-100 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          
+
+        {/* GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 xl:gap-6 mb-16">
+
           {/* Company Info */}
-          <div className="lg:col-span-1">
+          <div>
             <Link to="/" className="flex items-center gap-3 mb-6">
               <img
                 src={assets.Logo}
@@ -40,43 +41,48 @@ const Footer = () => {
                 </p>
               </div>
             </Link>
-            <p className="text-slate-600 leading-relaxed mb-6">
+            <p className="text-slate-600 leading-relaxed">
               Leading the way in pharmaceutical excellence with a commitment to
               global healthcare standards and innovative distribution.
             </p>
           </div>
 
-          {/* Quick Links - NOW CLICKABLE */}
+          {/* Quick Links */}
           <div>
             <h4 className="text-lg font-bold mb-7 text-slate-900 relative inline-block">
               Quick Links
               <span className="absolute -bottom-2 left-0 w-8 h-1 bg-teal-500 rounded-full"></span>
             </h4>
             <ul className="space-y-4">
-              {["Home", "About Us", "Innovation", "Contact Us", "Drug Safety"].map((item) => (
-                <li key={item}>
-                  <Link
-                    to={formatPath(item)}
-                    className="text-slate-600 hover:text-teal-600 flex items-center gap-2 transition-colors font-medium group"
-                  >
-                    <ChevronRight
-                      size={14}
-                      className="text-teal-400 group-hover:translate-x-1 transition-transform"
-                    />
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              {["Home", "About Us", "Innovation", "Contact Us", "Drug Safety"].map(
+                (item) => (
+                  <li key={item}>
+                    <Link
+                      to={formatPath(item)}
+                      className="text-slate-600 hover:text-teal-600 flex items-center gap-2 transition-colors font-medium group"
+                    >
+                      <ChevronRight
+                        size={14}
+                        className="text-teal-400 group-hover:translate-x-1 transition-transform"
+                      />
+                      {item}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
-          {/* Contact Details - CLICKABLE PROTOCOLS */}
-          <div>
+          {/* Get In Touch */}
+          <div className="lg:col-span-2">
             <h4 className="text-lg font-bold mb-7 text-slate-900 relative inline-block">
               Get In Touch
               <span className="absolute -bottom-2 left-0 w-8 h-1 bg-teal-500 rounded-full"></span>
             </h4>
+
             <div className="space-y-5">
+
+              {/* Website */}
               <div className="flex items-start gap-4">
                 <div className="bg-teal-100 p-2 rounded-lg text-teal-700">
                   <Globe size={18} />
@@ -85,38 +91,47 @@ const Footer = () => {
                   href="https://www.seeyaspharma.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-600 hover:text-teal-600 transition-colors pt-1"
+                  className="text-slate-600 hover:text-teal-600 transition-colors whitespace-nowrap"
                 >
                   www.seeyaspharma.com
                 </a>
               </div>
+
+              {/* Emails */}
               <div className="flex items-start gap-4">
                 <div className="bg-teal-100 p-2 rounded-lg text-teal-700">
                   <Mail size={18} />
                 </div>
-                <a
-                  href="mailto:info@seeyaspharma.com"
-                  className="text-slate-600 hover:text-teal-600 transition-colors pt-1"
-                >
-                  info@seeyaspharma.com
-                </a>
+                <div className="flex flex-col gap-1">
+                  <a
+                    href="mailto:murtzag1986@gmail.com"
+                    className="text-slate-600 hover:text-teal-600 transition-colors whitespace-nowrap"
+                  >
+                    murtzag1986@gmail.com
+                  </a>
+                  <a
+                    href="mailto:seeyasnutritionpharmaceuticals@gmail.com"
+                    className="text-slate-600 hover:text-teal-600 transition-colors whitespace-nowrap"
+                  >
+                    seeyasnutritionpharmaceuticals@gmail.com
+                  </a>
+                </div>
               </div>
+
+              {/* Address */}
               <div className="flex items-start gap-4">
                 <div className="bg-teal-100 p-2 rounded-lg text-teal-700">
-                  <Phone size={18} />
+                  <MapPin size={18} />
                 </div>
-                {/* Protocol for dialing phone numbers */}
-                <a 
-                  href="tel:+92000000000" 
-                  className="text-slate-600 hover:text-teal-600 transition-colors pt-1"
-                >
-                  +92 (Your Number)
-                </a>
+                <p className="text-slate-600 leading-relaxed max-w-md">
+                  Royal Enclave Housing Scheme, Near Alipur Chowk, Gujranwala
+                </p>
               </div>
+
             </div>
           </div>
 
-          {/* Newsletter / Social - CLICKABLE ICONS */}
+          {/* Global Presence */}
           <div>
             <h4 className="text-lg font-bold mb-7 text-slate-900 relative inline-block">
               Global Presence
@@ -125,24 +140,23 @@ const Footer = () => {
             <p className="text-slate-600 mb-6 italic">
               Stay connected with our global healthcare network.
             </p>
+
             <div className="flex gap-3">
               {[
                 { Icon: Facebook, link: "https://facebook.com/yourpage" },
                 { Icon: Linkedin, link: "https://linkedin.com/company/yourpage" },
                 { Icon: Instagram, link: "https://instagram.com/yourpage" },
-                { Icon: Twitter, link: "https://twitter.com/yourpage" }
+                { Icon: Twitter, link: "https://twitter.com/yourpage" },
               ].map((item, i) => (
                 <a
                   key={i}
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 text-teal-600 border
-                   border-slate-200 hover:bg-teal-600
-                    hover:text-white hover:border-teal-600
-                    hover:-translate-y-2
-                     rounded-xl flex items-center justify-center
-                      transition-all duration-700 shadow-sm"
+                  className="w-10 h-10 text-teal-600 border border-slate-200
+                  hover:bg-teal-600 hover:text-white hover:border-teal-600
+                  hover:-translate-y-2 rounded-xl flex items-center justify-center
+                  transition-all duration-700 shadow-sm"
                 >
                   <item.Icon size={18} />
                 </a>
@@ -156,19 +170,20 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
             <p className="text-slate-500 font-medium">
               © {new Date().getFullYear()}{" "}
-              <span className="text-teal-600 font-bold">Seeyas Pharma</span>.
-              All rights reserved.
+              <span className="text-teal-600 font-bold">Seeyas Pharma</span>. All
+              rights reserved.
             </p>
             <div className="flex gap-8 text-slate-400 font-medium">
-              <Link to="/privacy-policy" className="hover:text-teal-600 transition-colors">
+              <Link to="/privacy-policy" className="hover:text-teal-600">
                 Privacy Policy
               </Link>
-              <Link to="/terms-of-service" className="hover:text-teal-600 transition-colors">
+              <Link to="/terms-of-service" className="hover:text-teal-600">
                 Terms of Service
               </Link>
             </div>
           </div>
         </div>
+
       </div>
     </footer>
   );

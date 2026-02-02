@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import emailjs from "emailjs-com";
-import { 
-  ArrowRight, 
-  CheckCircle2, 
-  Crown, 
-  Mail, 
-  Phone, 
+import {
+  ArrowRight,
+  CheckCircle2,
+  Crown,
+  Mail,
+  Phone,
   Send,
   Building2,
   Globe,
   MessageSquare,
   User,
-  MapPin
+  MapPin,
 } from "lucide-react";
 
 const ApplicationPage = () => {
@@ -29,20 +29,39 @@ const ApplicationPage = () => {
     distributionLevel: "", // Less than 10 / More than 10
     findUs: "", // Social media / Representative met
     message: "",
-    time: new Date().toLocaleString()
+    time: new Date().toLocaleString(),
   });
 
   const [submitted, setSubmitted] = useState(false);
 
   const cities = [
-    "New York", "London", "Dubai", "Singapore", "Berlin", "Toronto", "Sydney", "Mumbai"
-  ];
+  "Karachi",
+  "Lahore",
+  "Islamabad",
+  "Rawalpindi",
+  "Faisalabad",
+  "Multan",
+  "Peshawar",
+  "Quetta",
+];
 
-  useGSAP(() => {
-    const tl = gsap.timeline();
-    tl.from(".form-header", { y: -50, opacity: 0, duration: 0.8, ease: "power3.out" })
-      .from(".form-field", { y: 20, opacity: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" }, "-=0.4");
-  }, { scope: containerRef });
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline();
+      tl.from(".form-header", {
+        y: -50,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      }).from(
+        ".form-field",
+        { y: 20, opacity: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" },
+        "-=0.4",
+      );
+    },
+    { scope: containerRef },
+  );
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -51,23 +70,38 @@ const ApplicationPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Send form using EmailJS
-    emailjs.sendForm(
-      "service_z9lr7bw",
-      "template_1usrdtw",
-      e.target,
-      "UC3V_C0dNKj59aqAD"
-    ).then(
-      (result) => {
-        console.log("Email sent:", result.text);
-        setSubmitted(true);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      },
-      (error) => {
-        console.error("Email error:", error.text);
-        alert("Error sending email. Check console.");
-      }
-    );
+    // 1. Pehla letter nikalna (Avatar ke liye)
+    const initial = formData.contactPerson
+      ? formData.contactPerson.charAt(0).toUpperCase()
+      : "U";
+
+    // 2. EmailJS ko bhejne ke liye data prepare karna
+    // Note: Profile image url agar user upload kare to udr add kr skty hain,
+    // warna ye default letter dikhaye ga.
+    const templateParams = {
+      ...formData,
+      profile_display: initial, // Ye template mein {{profile_display}} ki jagah jayega
+    };
+
+    // 3. emailjs.send istemal karein (sendForm ki jagah)
+    emailjs
+      .send(
+        "service_z9lr7bw",
+        "template_1usrdtw",
+        templateParams,
+        "UC3V_C0dNKj59aqAD",
+      )
+      .then(
+        (result) => {
+          console.log("Email sent:", result.text);
+          setSubmitted(true);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        },
+        (error) => {
+          console.error("Email error:", error.text);
+          alert("Error sending email. Check console.");
+        },
+      );
   };
 
   if (submitted) {
@@ -77,9 +111,17 @@ const ApplicationPage = () => {
           <div className="bg-emerald-500 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 className="w-10 h-10 text-white" />
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Application Received!</h2>
-          <p className="text-gray-600 mb-8">Thank you for your interest. Our partnership team will review your details and reach out within 48 hours.</p>
-          <Link to="/" className="inline-flex items-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-emerald-700 transition-all">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Application Received!
+          </h2>
+          <p className="text-gray-600 mb-8">
+            Thank you for your interest. Our partnership team will review your
+            details and reach out within 48 hours.
+          </p>
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-emerald-700 transition-all"
+          >
             Return to Homepage <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
@@ -95,7 +137,9 @@ const ApplicationPage = () => {
             <Crown className="w-4 h-4" />
             <span>Official Partner Program</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-4">Distributor Application</h1>
+          <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-4">
+            Distributor Application
+          </h1>
         </div>
 
         <div className="bg-white rounded-[2.5rem] shadow-xl p-8 md:p-12 border border-gray-100">
@@ -104,7 +148,8 @@ const ApplicationPage = () => {
               {/* Company Name */}
               <div className="form-field space-y-2">
                 <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
-                  <Building2 className="w-4 h-4 text-emerald-600" /> Company Name *
+                  <Building2 className="w-4 h-4 text-emerald-600" /> Company
+                  Name *
                 </label>
                 <input
                   type="text"
@@ -163,7 +208,6 @@ const ApplicationPage = () => {
                 />
               </div>
 
-
               {/* City */}
               <div className="form-field space-y-2">
                 <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
@@ -176,9 +220,13 @@ const ApplicationPage = () => {
                   onChange={handleChange}
                   className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all appearance-none bg-white"
                 >
-                  <option value="" disabled>Select a city</option>
+                  <option value="" disabled>
+                    Select a city
+                  </option>
                   {cities.map((city) => (
-                    <option key={city} value={city}>{city}</option>
+                    <option key={city} value={city}>
+                      {city}
+                    </option>
                   ))}
                   <option value="Other">Other...</option>
                 </select>
@@ -196,9 +244,15 @@ const ApplicationPage = () => {
                   onChange={handleChange}
                   className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all appearance-none bg-white"
                 >
-                  <option value="" disabled>Select level</option>
-                  <option value="Less than 10 employees">Less than 10 employees</option>
-                  <option value="More than 10 employees">More than 10 employees</option>
+                  <option value="" disabled>
+                    Select level
+                  </option>
+                  <option value="Less than 10 employees">
+                    Less than 10 employees
+                  </option>
+                  <option value="More than 10 employees">
+                    More than 10 employees
+                  </option>
                 </select>
               </div>
 
@@ -214,7 +268,9 @@ const ApplicationPage = () => {
                   onChange={handleChange}
                   className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50 outline-none transition-all appearance-none bg-white"
                 >
-                  <option value="" disabled>Select</option>
+                  <option value="" disabled>
+                    Select
+                  </option>
                   <option value="Social Media">Social Media</option>
                   <option value="Representative Met">Representative Met</option>
                 </select>
@@ -224,7 +280,8 @@ const ApplicationPage = () => {
             {/* Additional Details */}
             <div className="form-field space-y-2">
               <label className="flex items-center gap-2 text-sm font-bold text-gray-700 ml-1">
-                <MessageSquare className="w-4 h-4 text-emerald-600" /> Additional Details
+                <MessageSquare className="w-4 h-4 text-emerald-600" />{" "}
+                Additional Details
               </label>
               <textarea
                 name="message"
