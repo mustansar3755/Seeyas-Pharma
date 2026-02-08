@@ -27,7 +27,7 @@ const InnovationHero = () => {
       {/* Background Image Section - High-tech Lab Image */}
       <div className="absolute inset-0 z-0">
         <img
-        src={assets.InnovationHero}
+        src={assets.Innovation_Hero}
           alt="Advanced Laboratory Research"
           className="w-full h-full object-cover opacity-40"
         />

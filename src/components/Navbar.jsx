@@ -14,13 +14,15 @@ const Navbar = () => {
     { name: "About Us", path: "/about-us" },
     { name: "Innovation", path: "/innovation" },
     { name: "Global Presence", path: "/global" },
+    { name: "CSR Corporate", path: "/csr-corporate-social-responsibility" },
     { name: "News & Events", path: "/news" },
     { name: "Contact Us", path: "/contact-us" },
   ];
 
   return (
-    <header className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-emerald-100/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+    <header className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b
+     border-emerald-100/50">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
         <div className="flex items-center justify-between">
           
           {/* Logo + Brand Name Section */}

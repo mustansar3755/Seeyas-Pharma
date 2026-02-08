@@ -3,7 +3,6 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactHero from "../components/ContactUs/ContactHero";
-import InfoCards from "../components/ContactUs/InfoCards";
 import ContactFormSection from "../components/ContactUs/ContactFormSection";
 import LocationSection from "../components/ContactUs/LocationSection";
 
