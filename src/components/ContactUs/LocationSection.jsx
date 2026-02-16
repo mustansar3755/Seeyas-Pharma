@@ -21,7 +21,7 @@ const LocationSection = () => {
 
             <div className="space-y-6 mb-10">
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-white shadow-md rounded-lg flex items-center justify-center text-emerald-600 border border-slate-100">
+                <div className="shrink-0 w-10 h-10 bg-white shadow-md rounded-lg flex items-center justify-center text-emerald-600 border border-slate-100">
                   <Navigation size={20} />
                 </div>
                 <div>
@@ -46,13 +46,13 @@ const LocationSection = () => {
           </div>
 
           {/* Right: Map Display */}
-          <div className="w-full lg:w-2/3 h-[450px] lg:h-[550px] rounded-[2rem] overflow-hidden shadow-2xl border-8 border-white relative group">
+          <div className="w-full lg:w-2/3 h-112.5 lg:h-137.5 rounded-4xl overflow-hidden shadow-2xl border-8 border-white relative group">
             {/* Overlay Gradient for depth */}
             <div className="absolute inset-0 pointer-events-none ring-1 ring-black/5 rounded-[1.8rem] z-10"></div>
             
             <iframe
               src={googleMapUrl}
-              className="w-full h-full transition-transform duration-[2000ms] group-hover:scale-105"
+              className="w-full h-full transition-transform duration-2000 group-hover:scale-105"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"

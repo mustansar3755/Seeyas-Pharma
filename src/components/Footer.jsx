@@ -119,7 +119,8 @@ const Footer = () => {
                   <MapPin size={18} />
                 </div>
                 <p className="text-slate-600 leading-relaxed max-w-md">
-                  Royal Enclave Housing Scheme, Near Alipur Chowk, Gujranwala
+                   T & T Aabpara Housing Society,
+                    Lahore, Punjab, Pakistan
                 </p>
               </div>
 
