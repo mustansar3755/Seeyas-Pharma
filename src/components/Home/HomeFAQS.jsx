@@ -61,7 +61,7 @@ const FAQItem = ({ faq, isOpen, toggle }) => {
 };
 
 const HomeFAQS = () => {
-  const [openIndex, setOpenIndex] = useState(0); // Pehla FAQ default open rahega
+  const [openIndex, setOpenIndex] = useState(0); 
 
   return (
     <section className="py-24 bg-slate-50">
@@ -74,7 +74,8 @@ const HomeFAQS = () => {
             Frequently Asked <span className="text-emerald-600">Questions</span>
           </h2>
           <p className="text-slate-500">
-            Aapke zehan mein koi sawal hai? Shayad iska jawab yahan maujood ho.
+            Have questions about our distribution, quality standards, or services? 
+            Find the answers you need below.
           </p>
         </div>
 

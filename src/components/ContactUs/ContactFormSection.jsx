@@ -32,16 +32,6 @@ const ContactFormSection = ({ formData, setFormData, onSubmit }) => {
             </div>
 
             <div className="flex gap-5">
-              <div className="w-12 h-12 shrink-0 rounded-2xl bg-cyan-50 flex items-center justify-center">
-                <Phone className="w-6 h-6 text-cyan-600" />
-              </div>
-              <div>
-                <h4 className="text-gray-900 font-bold text-lg">Call Us</h4>
-                <p className="text-gray-500">+1 (234) 567-890</p>
-              </div>
-            </div>
-
-            <div className="flex gap-5">
               <div className="w-12 h-12 shrink-0 rounded-2xl bg-emerald-50 flex items-center justify-center">
                 <MapPin className="w-6 h-6 text-emerald-600" />
               </div>
