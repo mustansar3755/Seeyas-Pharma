@@ -17,7 +17,11 @@ import PillsNotebookImg from "./images/PillsNotebookImg.jpeg";
 import VialsImg from "./images/VialsImg.jpeg";
 import DarkBottlesImg from "./images/DarkBottlesImg.jpeg";
 
+import HeroVideo from "./HeroVideo.mp4";
+
 export default {
+  HeroVideo,
+
   PlantImg,
   CapsulesImg,
   PillsNotebookImg,
