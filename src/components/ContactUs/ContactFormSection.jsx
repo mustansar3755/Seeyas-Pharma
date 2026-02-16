@@ -38,7 +38,7 @@ const ContactFormSection = ({ formData, setFormData, onSubmit }) => {
               <div>
                 <h4 className="text-gray-900 font-bold text-lg">Main Office</h4>
                 <p className="text-gray-500">
-                  Seeyas Group Headquarters, U.S.A
+                 T & T Aabpara Housing Society Lahore
                 </p>
               </div>
             </div>
